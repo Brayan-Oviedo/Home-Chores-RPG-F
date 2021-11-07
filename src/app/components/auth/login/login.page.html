@@ -1,0 +1,35 @@
+<app-header title="Inicio de sesión"></app-header>
+<ion-content>
+
+  <div class="content">
+
+    <form [formGroup]="formUser" mode="ios">
+
+      <ion-item lines="full">
+        <ion-label position="floating">Nombre de usuario <span class="required">*</span></ion-label>
+        <ion-input type="text" formControlName="username"></ion-input>
+      </ion-item>
+      <div class="error" *ngIf="this.formUser.get('username').errors?.minlength">
+        <ion-label color="danger">El nombre de usuario es demasiado corto</ion-label>
+      </div>
+  
+  
+      <ion-item lines="full">
+        <ion-label position="floating">Contraseña <span class="required">*</span></ion-label>
+        <ion-input type="password" formControlName="password"></ion-input>
+      </ion-item>
+      <div class="error" *ngIf="this.formUser.get('password').errors?.minlength">
+        <ion-label color="danger" >La contraseña es demasiado corta</ion-label>
+      </div>
+  
+    </form>
+  
+    <div id="item-container">
+      <ion-item id="item-bottom" lines="full">
+        <ion-label id="item-label">¿Aun no tienes una cuenta? <a [routerLink]="['/auth/register']">Crear cuenta</a></ion-label>
+      </ion-item>
+      <ion-button (click)="login()" [disabled]="formUser.invalid" expand="full" size="large">Ingresar</ion-button>
+    </div>
+  </div>
+
+</ion-content>

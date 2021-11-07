@@ -1,0 +1,66 @@
+<app-header title="Registrate"></app-header>
+
+<ion-content >
+
+  <form [formGroup]="formUser" mode="ios">
+
+    <ion-item lines="full">
+      <ion-label position="floating">Nombre <span class="required">*</span></ion-label>
+      <ion-input type="text" formControlName="name"></ion-input>
+    </ion-item>
+    <div class="error" *ngIf="this.formUser.get('name').errors?.minlength">
+      <ion-label color="danger">El nombre es demasiado corto</ion-label>
+    </div>
+
+
+    <ion-item lines="full">
+      <ion-label position="floating">Nombre de usuario <span class="required">*</span></ion-label>
+      <ion-input type="text" formControlName="username"></ion-input>
+    </ion-item>
+    <div class="error" *ngIf="this.formUser.get('username').errors?.minlength">
+      <ion-label color="danger">El nombre de usuario es demasiado corto</ion-label>
+    </div>
+
+
+    <ion-item lines="full">
+      <ion-label position="floating">Contraseña <span class="required">*</span></ion-label>
+      <ion-input type="password" formControlName="password"></ion-input>
+    </ion-item>
+    <div class="error" *ngIf="this.formUser.get('password').errors?.minlength">
+      <ion-label color="danger" >La contraseña es demasiado corta</ion-label>
+    </div>
+
+
+    <ion-item lines="full">
+      <ion-label position="floating">Confirme la contraseña <span class="required">*</span></ion-label>
+      <ion-input formControlName="confirmPassword" type="password"></ion-input>
+    </ion-item>
+    <div class="error" *ngIf="this.formUser.get('confirmPassword').errors">
+      <ion-label *ngIf="this.formUser.get('confirmPassword').errors?.minlength" color="danger" >Es demasiado corta</ion-label>
+      <ion-label *ngIf="this.formUser.errors?.samePasswords" color="danger" >Las contraseñas no coinciden</ion-label>
+    </div>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Fecha de nacimiento</ion-label>
+      <ion-datetime displayFormat="DD/MM/YYYY" formControlName="birthDay" mode="ios"></ion-datetime>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Rol(es) <span class="required">*</span></ion-label>
+      <ion-select formControlName="roles" multiple="true">
+        <ion-select-option *ngFor="let rol of rols" [value]="rol.role">{{rol.description}}</ion-select-option> 
+      </ion-select>
+    </ion-item>
+    <div class="error" *ngIf="this.formUser.get('roles').errors?.required">
+      <ion-label color="danger" >Debe ingresar almenos un rol</ion-label>
+    </div>
+
+  </form>
+
+  <div id="item-container">
+    <ion-item id="item-bottom" lines="full">
+      <ion-label id="item-label">¿Ya tienes una cuenta? <a [routerLink]="['/auth/login']">Inicia sesión</a></ion-label>
+    </ion-item>
+    <ion-button (click)="register()" [disabled]="formUser.invalid" expand="full" size="large">Registrarme</ion-button>
+  </div>
+</ion-content>

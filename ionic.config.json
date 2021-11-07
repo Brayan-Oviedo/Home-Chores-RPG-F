@@ -1,0 +1,7 @@
+{
+  "name": "Home-Chores-F",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

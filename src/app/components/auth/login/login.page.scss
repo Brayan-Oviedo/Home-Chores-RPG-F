@@ -1,0 +1,47 @@
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: center;
+    height: 100%;
+}
+
+form {
+    margin-left: 2vw;
+    margin-right: 2vw;
+}
+
+.required {
+    color: red;
+}
+
+ion-item {
+	margin: 2vh 0;
+}
+
+.error {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    padding: 0 2vw 2vh 2vw;
+    margin-bottom: 2vh;
+}
+
+#item-container {
+    margin: 0 2vw;
+}
+
+#item-bottom {
+    margin-top: 2vh;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+#item-label {
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+}
+
