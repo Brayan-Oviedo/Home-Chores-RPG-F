@@ -47,7 +47,8 @@ export class LoginPage implements OnInit {
     .subscribe(
       async result => {
         this.tokenService.setToken(result.token);
-        this.messageService.showMessage('¡Bienvenido!', '')
+        this.messageService.showMessage('¡Bienvenido!', '');
+        this.formUser.reset();
         this.router.navigate(['/home/guild']);
       },
       fail => {
